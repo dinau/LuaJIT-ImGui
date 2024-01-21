@@ -12,19 +12,19 @@ include_directories(cimnodes/imnodes)
 add_definitions("-DIMGUI_DISABLE_OBSOLETE_FUNCTIONS=1")
 add_definitions(-DIMNODES_NAMESPACE=imnodes)
 include_directories(cimgui)
-set(IMGUI_SOURCES ./cimgui/cimgui.cpp 
-./cimgui/imgui/imgui.cpp 
-./cimgui/imgui/imgui_draw.cpp 
-./cimgui/imgui/imgui_demo.cpp 
-./cimgui/imgui/imgui_widgets.cpp 
-./cimplot/cimplot.cpp 
+set(IMGUI_SOURCES ./cimgui/cimgui.cpp
+./cimgui/imgui/imgui.cpp
+./cimgui/imgui/imgui_draw.cpp
+./cimgui/imgui/imgui_demo.cpp
+./cimgui/imgui/imgui_widgets.cpp
+./cimplot/cimplot.cpp
 ./cimplot/implot/implot.cpp
-./cimplot/implot/implot_items.cpp  
+./cimplot/implot/implot_items.cpp
 ./cimplot/implot/implot_demo.cpp
 ./cimguizmo/cimguizmo.cpp
 ./cimguizmo/ImGuizmo/ImGuizmo.cpp
 ./cimguizmo_quat/cimguizmo_quat.cpp
-./cimguizmo_quat/imGuIZMO.quat/imGuIZMO.quat/imGuIZMOquat.cpp  
+./cimguizmo_quat/imGuIZMO.quat/imGuIZMO.quat/imGuIZMOquat.cpp
 ./cimnodes/cimnodes.cpp
 ./cimnodes/imnodes/imnodes.cpp
 ./cimnodes_r/cimnodes_r.cpp
@@ -48,8 +48,10 @@ set(IMGUI_SOURCES_sdl)
 set(IMGUI_LIBRARIES )
 set(IMGUI_ft_LIBRARIES )
 
+add_definitions("-DImDrawIdx=unsigned int")
 if (WIN32)
     add_definitions("-DIMGUI_IMPL_API=extern \"C\" __declspec\(dllexport\)")
+    add_definitions("-DIMGUI_ENABLE_WIN32_DEFAULT_IME_FUNCTIONS")
     list(APPEND IMGUI_LIBRARIES imm32)
 else(WIN32)
     add_definitions("-DIMGUI_IMPL_API=extern \"C\" ")
@@ -123,7 +125,7 @@ if(IMPL_GLFW)
 	install(TARGETS cimgui_glfw
               RUNTIME DESTINATION  ${LUAJIT_BIN}
               LIBRARY DESTINATION  ${LUAJIT_BIN}
-              #ARCHIVE DESTINATION lib 
+              #ARCHIVE DESTINATION lib
               )
 endif(IMPL_GLFW)
 
@@ -153,7 +155,7 @@ if(IMPL_SDL)
 	install(TARGETS cimgui_sdl
               RUNTIME DESTINATION  ${LUAJIT_BIN}
               LIBRARY DESTINATION  ${LUAJIT_BIN}
-              #ARCHIVE DESTINATION lib 
+              #ARCHIVE DESTINATION lib
               )
 endif(IMPL_SDL)
 
